@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+	<title>Breach Hosting Calculator</title>
+</head>
+<body>
+	<style>
+		body{
+			margin:0;
+			padding: 0;
+		}
+		p,.col{
+			font-weight: 700;
+			text-align: center;
+		}
+		.form{
+			background: #eee;
+			padding: 50px 0; 
+			text-align: center;
+		}
+		.result{
+			padding: 20px 0;
+		}
+		.submit_btn{
+			min-height: 30px;
+			min-width: 100px;
+			text-align: center;
+			padding: 10px 0;
+			background: #1e1e1e;
+			color: #fff;
+			box-sizing: border-box;
+			display: inline-block;
+			margin: 10px 0;
+		}
+	</style>
+	<div class="parent">
+		<div class="row form">
+			<div class="col-12 justify-content-md-center"><label for="per_run">How much per run? 1ex === 190c</label></div>
+			<div class="col-12 justify-content-md-center"><input type="text" name="per_run" id="runs" /></div>
+			<div class="col-12 justify-content-md-center"><a href="#" class="submit_btn" id="btnSub">Submit</a></div>
+		</div>
+		
+		<div class="row result">
+		  <div class="col">
+			<label for="per_run">Six Runs</label>	
+			<p id="six_run"></p>
+		  </div>
+		  <div class="col">
+			<label for="per_run">Five Runs</label>	
+			<p id="five_run"></p>
+		  </div>
+		  <div class="col">
+			<label for="per_run">Four Runs</label>	
+			<p id="four_run"></p>
+		  </div>
+		  <div class="col">
+			<label for="per_run">Three Runs</label>	
+			<p id="three_run"></p>
+		  </div>
+		  <div class="col">
+			<label for="per_run">Two Runs</label>	
+			<p id="two_run"></p>
+		  </div>
+		  <div class="col">
+			<label for="per_run">One Runs</label>	
+			<p id="one_run"></p>
+		  </div>
+		</div>
+	</div>
+	
+
+	<script>
+		(function(){
+			const runFunction = e => {
+				let btn = document.getElementById('btnSub');
+
+				btn.addEventListener('click',function (e) {
+					let runInput = document.getElementById('runs').value;
+					let six_run = document.getElementById('six_run');
+					let five_run = document.getElementById('five_run');
+					let four_run = document.getElementById('four_run');
+					let three_run = document.getElementById('three_run');
+					let two_run = document.getElementById('two_run');
+					let one_run = document.getElementById('one_run');
+					e.preventDefault();
+
+					if (runInput !== "") {
+						let srv = runInput * 6;
+						let frv = runInput * 5;
+						let fourv = runInput * 4;
+						let trv = runInput * 3;
+						let twrv = runInput * 2;
+
+						six_run.innerHTML = srv + "chaos" + "<br /> or <br />" + srv / 190 + "ex";
+						five_run.innerHTML = frv + "chaos" + "<br /> or <br />" + frv / 190 + "ex";
+						four_run.innerHTML = fourv + "chaos" + "<br /> or <br />" + fourv / 190 + "ex";
+						three_run.innerHTML = trv + "chaos" + "<br /> or <br />" + trv / 190 + "ex";
+						two_run.innerHTML = twrv + "chaos" + "<br /> or <br />" + twrv / 190 + "ex";
+						one_run.innerHTML = runInput + "chaos" + "<br /> or <br />" + runInput / 190 + "ex";
+
+					}
+					console.log(runInput);
+
+
+
+				})
+
+			}
+
+			runFunction();
+		})();
+	</script>
+</body>
+</html>
